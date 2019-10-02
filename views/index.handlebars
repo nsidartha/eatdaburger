@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="title">Eat Da Burger!</h1>
+  </div>
+</div>
+
+<!-- Form to Submit Burger Names -->
+<div class="row">
+  <div class="col-12">
+    <form id="addForm">
+      <div class="form-group">
+        <label for="burgerName">Enter a burger name to add it to the list:</label>
+        <input id="burgerName" class="form-control" type="text" placeholder="burgurs yumm" required>
+      </div>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</div>
+
+<div class="row">
+  <!-- Added Burgers -->
+  <div class="col-12 col-md-6">
+    <div class="card">
+      <div class="card-header">Burger List</div>
+      <div class="card-body">
+        <ul>
+          {{#each burgers}}
+            {{#unless devoured}}
+              {{> burgers/burgerBlock devoured=false}}
+            {{/unless}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Devoured Burgers -->
+  <div class="col-12 col-md-6">
+    <div class="card devoured-card">
+      <div class="card-header devoured-header">Devoured Burgers</div>
+      <div class="card-body">
+        <ul>
+          {{#each burgers}}
+            {{#if devoured}}
+              {{> burgers/burgerBlock devoured=true}}
+            {{/if}}
+          {{/each}}
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
